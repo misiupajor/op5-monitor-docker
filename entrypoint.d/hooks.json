@@ -1,22 +1,22 @@
 {
         "start": [
             {   
-                "path": "/usr/libexec/entrypoint.d/hooks/test.s2h",
-                "args": ["test"]
+                "path": "/bin/echo",
+                "args": ["--action", "container_started"]
             },  
             {   
                 "path": "/usr/bin/echo",
-                "args": ["oci-register-machine", "prestart"]
+                "args": ["arg1", "arg2"]
             }   
         ],  
         "stop":[
             {   
-                "path": "/usr/libexec/oci/hooks.d/oci-systemd-hook",
-                "args": ["oci-systemd-hook", "poststop"]
+                "path": "/bin/echo",
+                "args": ["--update_cmdb"]
             },  
             {   
-                "path": "/usr/libexec/oci/hooks.d/oci-register-machine",
-                "args": ["oci-register-machine", "poststop"]
+                "path": "/bin/echo",
+                "args": ["--action", "container_stopped"]
             }   
         ]   
 }
