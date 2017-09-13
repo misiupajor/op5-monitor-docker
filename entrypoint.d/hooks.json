@@ -1,0 +1,22 @@
+{
+        "start": [
+            {   
+                "path": "/usr/libexec/entrypoint.d/hooks/test.s2h",
+                "args": ["test"]
+            },  
+            {   
+                "path": "/usr/bin/echo",
+                "args": ["oci-register-machine", "prestart"]
+            }   
+        ],  
+        "stop":[
+            {   
+                "path": "/usr/libexec/oci/hooks.d/oci-systemd-hook",
+                "args": ["oci-systemd-hook", "poststop"]
+            },  
+            {   
+                "path": "/usr/libexec/oci/hooks.d/oci-register-machine",
+                "args": ["oci-register-machine", "poststop"]
+            }   
+        ]   
+}

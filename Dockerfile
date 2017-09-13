@@ -29,6 +29,7 @@ EXPOSE 22
  #SNMPD
 EXPOSE 162/tcp 162/udp
 
-COPY /entrypoint.d /root/entrypoint.d/
-RUN chmod +x /root/entrypoint.d/entrypoint.sh
-CMD ["/root/entrypoint.d/entrypoint.sh"]
+COPY /entrypoint.d /usr/libexec/entrypoint.d/
+RUN chmod +x /usr/libexec/entrypoint.d/entrypoint.sh
+RUN chmod +x /usr/libexec/entrypoint.d/hooks.py
+CMD ["/usr/libexec/entrypoint.d/entrypoint.sh"]
