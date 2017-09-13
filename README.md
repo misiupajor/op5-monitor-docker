@@ -22,8 +22,8 @@ Build the docker image:
 
 Run the docker container:
 
-`$ docker run -tid -p 443:443 op5/monitor-base` 
+`$ docker run -tid -p 445:443 op5/monitor-base` 
 
 Now you can reach OP5 Monitor on:
 
-https://<ip-to-docker-host>
+https://`<docker server>`:445
