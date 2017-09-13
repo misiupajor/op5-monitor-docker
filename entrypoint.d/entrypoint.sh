@@ -21,6 +21,9 @@ function stop_hook() {
     fi
 }
 
+# execute start hooks
+start_hook
+
 # execute shutdown hooks when gracefully shutdown
 trap stop_hook SIGTERM
 trap stop_hook SIGINT
