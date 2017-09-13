@@ -29,6 +29,6 @@ EXPOSE 22
  #SNMPD
 EXPOSE 162/tcp 162/udp
 
-COPY docker-entrypoint.sh /root/docker-entrypoint.sh
-RUN chmod +x /root/docker-entrypoint.sh
-CMD ["/root/docker-entrypoint.sh"]
+ADD entrypoint.d /root/
+RUN chmod +x /root/entrypoint.d/entrypoint.sh
+CMD ["/root/entrypoint.d/entrypoint.sh"]
