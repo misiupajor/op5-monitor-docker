@@ -27,3 +27,32 @@ Run the docker container:
 Now you can reach OP5 Monitor on:
 
 https://`<docker server>`:445
+
+## Adding hooks
+
+You can add custom hooks by adding any script to /entrypoint.d/hooks/ directory. Ensure that they are executable and defined in /entrypoint.d/hooks.json like this:
+
+```json
+{
+        "start": [
+            {
+                "path": "/bin/echo",
+                "args": ["--action", "container_started"]
+            },
+            {
+                "path": "/usr/bin/echo",
+                "args": ["arg1", "arg2"]
+            }
+        ],
+        "stop":[
+            {
+                "path": "/bin/echo",
+                "args": ["--update_cmdb"]
+            },
+            {
+                "path": "/bin/echo",
+                "args": ["--action", "container_stopped"]
+            }
+        ]
+}
+```
