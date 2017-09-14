@@ -1,2 +1,3 @@
 #!/bin/bash
-echo $1> /tmp/out
+echo "Hook ran with arguments:" >> /tmp/out
+echo $@ >> /tmp/out
