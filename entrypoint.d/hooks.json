@@ -12,11 +12,12 @@
         "stop":[
             {   
                 "path": "/bin/echo",
-                "args": ["--update_cmdb"]
-            },  
-            {   
-                "path": "/bin/echo",
                 "args": ["--action", "container_stopped"]
-            }   
+            },
+            {
+                "path": "/bin/echo",
+                "args": ["arg1", "arg2"]
+            },
+
         ]   
 }
