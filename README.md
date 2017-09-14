@@ -2,6 +2,8 @@
 
 OP5 Monitor is a software product for server, Network monitoring and management based on the Open Source project Nagios. 
 
+This docker image is not supported by our regular OP5 support.
+
 *See [OP5 Monitor Documentation](https://kb.op5.com/x/KwCP) for User and Admin manual.*
 
 *See [Docker Hub](https://hub.docker.com/r/op5com/op5-monitor) image.*
