@@ -1,7 +1,7 @@
 {
         "start": [
             {   
-                "path": "/bin/echo",
+                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
                 "args": ["--action", "container_started"]
             },  
             {   
@@ -11,13 +11,12 @@
         ],  
         "stop":[
             {   
-                "path": "/bin/echo",
+                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
                 "args": ["--action", "container_stopped"]
             },
             {
                 "path": "/bin/echo",
                 "args": ["arg1", "arg2"]
-            },
-
+            }
         ]   
 }
