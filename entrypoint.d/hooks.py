@@ -7,7 +7,7 @@ import subprocess
 
 __author__ = "Misiu Pajor <misiu.pajor@op5.com>"
 
-HOOKS_FILE = "hooks.json"
+HOOKS_FILE = "/usr/libexec/entrypoint.d/hooks.json"
 
 def _load_hooks(type=None):
     try:
