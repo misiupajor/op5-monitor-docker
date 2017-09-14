@@ -28,7 +28,7 @@ $ git clone https://github.com/misiupajor/op5-monitor-docker.git
 ```
 
 ```sh
-$ docker build --tm t op5com/op5-monitor
+$ docker build --rm -t op5com/op5-monitor .
 ```
 
 ## Usage
