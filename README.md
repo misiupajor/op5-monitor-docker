@@ -4,7 +4,7 @@ OP5 Monitor is a software product for server, Network monitoring and management 
 
 *See [OP5 Monitor Documentation	](https://kb.op5.com/x/KwCP) for User and Admin manual.*
 
-*See image on [Docker Hub](https://hub.docker.com/r/misiupajor/op5-monitor).*
+*See [Docker Hub](https://hub.docker.com/r/misiupajor/op5-monitor) image.*
 
 ## Features
 
