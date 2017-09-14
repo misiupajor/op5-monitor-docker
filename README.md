@@ -2,11 +2,9 @@
 
 OP5 Monitor is a software product for server, Network monitoring and management based on the Open Source project Nagios. 
 
-*See [OP5 Monitor Documentation	](https://kb.op5.com/x/KwCP) for User and Admin manual.*
+*See [OP5 Monitor Documentation](https://kb.op5.com/x/KwCP) for User and Admin manual.*
 
 *See [Docker Hub](https://hub.docker.com/r/op5com/op5-monitor) image.*
-=======
-*See [Docker Hub](https://hub.docker.com/r/misiupajor/op5-monitor) image.*
 
 ## Features
 
@@ -67,7 +65,6 @@ You can add custom hooks by adding any script to /entrypoint.d/hooks/ directory.
 ```
 
 ## Importing OP5 backup files
-
 
 This docker container supports importing and restoring of existing OP5 backups. This can be helpful when you need to spin up an identical copy of your production OP5 servers, say for testing or development purposes.
 
