@@ -1,22 +1,32 @@
 {
-        "start": [
+        "prestart": [
             {   
-                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "container_started"]
+                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+                "args": ["prestart"]
             },  
             {   
-                "path": "/usr/bin/echo",
-                "args": ["arg1", "arg2"]
+                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
+                "args": ["--action", "contained_started"]
             }   
         ],  
-        "stop":[
+        "poststart": [
+            {
+                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+                "args": ["poststart"]
+            },
+            {
+                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
+                "args": ["--action", "contained_booted"]
+            }
+        ],
+        "poststop":[
+            {
+                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+                "args": ["poststop"]
+            },
             {   
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
                 "args": ["--action", "container_stopped"]
             },
-            {
-                "path": "/bin/echo",
-                "args": ["arg1", "arg2"]
-            }
         ]   
 }
