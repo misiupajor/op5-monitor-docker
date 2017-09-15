@@ -14,23 +14,11 @@ RUN yum -y install wget openssh-server python-requests \
 # https://groups.google.com/forum/#!topic/docker-user/446yoB0Vx6w
 RUN sed -i -E 's/^(\s*)system\(\);/\1unix-stream("\/dev\/log");/' /etc/syslog-ng/syslog-ng.conf
 
-# HTTPD
-EXPOSE 80 443
-
-# NRPE agent
-EXPOSE 5666
-
-# Merlin
-EXPOSE 15551
-
-# SSH
-EXPOSE 22
-
- #SNMPD
-EXPOSE 162/tcp 162/udp
+# Expose ports required by OP5
+EXPOSE 80 443 5666 15551 22 161/tcp 162/udp
 
 COPY /entrypoint.d /usr/libexec/entrypoint.d/
-RUN chmod +x /usr/libexec/entrypoint.d/hooks/*
-RUN chmod +x /usr/libexec/entrypoint.d/entrypoint.sh
-RUN chmod +x /usr/libexec/entrypoint.d/hooks.py
+RUN chmod +x /usr/libexec/entrypoint.d/hooks/* \
+	&& chmod +x /usr/libexec/entrypoint.d/entrypoint.sh \ 
+	&& chmod +x /usr/libexec/entrypoint.d/hooks.py
 CMD ["/usr/libexec/entrypoint.d/entrypoint.sh"]
