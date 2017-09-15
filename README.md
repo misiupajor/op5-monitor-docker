@@ -14,7 +14,7 @@ This repository contains the OP5 Monitor software, in docker. It is also availab
  * Pre-bundled with a trial license
  * Support for **triggering hooks** on prestart, poststart and poststop. **Slack** hook example is included.
  * Support for **importing OP5 backup files** to help quickly lanuch testing/development environments
- * Support for **importing OP5 license keys*. Defaults to trial license if not specified
+ * Support for **installing OP5 license keys**. Defaults to trial license if none if specified
 
 ## Install
 
