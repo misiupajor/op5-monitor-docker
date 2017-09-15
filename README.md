@@ -111,7 +111,7 @@ $ docker run -tid -e IMPORT_BACKUP=<name of backup file>.backup -p 443:443 op5co
 
 Thanks goes to these wonderful people:
 
-* Caesar Ahlenhed ([@MrFriday AB])(https://www.mrfriday.com)
+* Caesar Ahlenhed ([@MrFriday AB](https://www.mrfriday.com))
 
 ## Author
 **Misiu Pajor**
