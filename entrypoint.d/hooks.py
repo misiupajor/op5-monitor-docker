@@ -35,7 +35,7 @@ def trigger_hook(type=None):
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        available_types = ["start", "stop"]
+        available_types = ["prestart", "poststart", "poststop"]
         if sys.argv[1] in available_types:
             trigger_hook(sys.argv[1])
         else:
