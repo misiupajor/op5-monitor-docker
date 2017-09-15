@@ -82,6 +82,12 @@ You can add custom hooks by adding any script to /entrypoint.d/hooks/ directory.
 }
 ```
 
+And then build:
+
+```sh
+$ docker build --rm -t op5com/op5-monitor .
+```
+
 ## Importing OP5 backup files
 
 This docker container supports importing and restoring of existing OP5 backups. This can be helpful when you need to spin up an identical copy of your production OP5 servers, say for testing or development purposes.
