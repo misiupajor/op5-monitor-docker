@@ -77,7 +77,7 @@ You can add custom hooks by adding any script to /entrypoint.d/hooks/ directory.
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
                 "args": ["--action", "container_stopped"]
-            },
+            }
         ]
 }
 ```
