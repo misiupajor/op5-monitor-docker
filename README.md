@@ -10,7 +10,7 @@ OP5 Monitor is a software product for server, Network monitoring and management 
 
  * Latest version of OP5 monitor to date (currently v7.3.15)
  * Pre-bundled with a trial license
- * Support for **triggering hooks** on container start/stop
+ * Support for **triggering hooks** on prestart, poststart and poststop
  * Support for **importing OP5 backup files** to help quickly lanuch testing/development environments
 
 ## Install
