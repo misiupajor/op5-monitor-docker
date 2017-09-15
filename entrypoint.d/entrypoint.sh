@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -eu pipefail
-set -x
+#set -x
 
 function trigger_hooks() {
     echo "Triggering ${1} hooks"
@@ -13,10 +13,10 @@ trigger_hooks prestart
 # import backup file
 if [ ! -z "$IMPORT_BACKUP" ]; then
 	file="/usr/libexec/entrypoint.d/backups/${IMPORT_BACKUP}"
-    if [ ! -f "$file" ]; then
-        echo -e "Error. Failed to import backup. File is missing: ${file}. Skipping...\n"
+    if [ ! -e "$file" ]; then
+        echo -e "Error importing backup. Backup file ${file} does not exist."
     else
-        echo -e "Backup file found. Importing: ${file} ...\n"
+        echo -e "Backup file found. Importing: ${file} ..."
 		op5-restore -n -b ${file}
 		# remove all peer and poller nodes
 		for node in `mon node list --type=peer,poller`; do mon node remove "$node"; done;
@@ -24,11 +24,25 @@ if [ ! -z "$IMPORT_BACKUP" ]; then
     fi
 fi
 
+if [ ! -z "$LICENSE_KEY" ]; then
+	file="/usr/libexec/entrypoint.d/licenses/${LICENSE_KEY}"
+	if [ ! -e "$file" ]; then
+        echo -e "Error importing license. License file ${file} does not exist."
+	else
+		if [[ "$file" =~ \.lic$ ]]; then
+			echo -e "License file found. Importing license file: ${file} ..."
+			mv $file /etc/op5license/op5license.lic
+		else
+			echo -e "Unable to import license file. License file extension must be .lic"
+		fi
+	fi
+fi
+
 # set default password to 'monitor'
 echo 'root:monitor' | chpasswd
 
 # start OP5 related services
-services=("sshd" "mysqld" "merlind" "naemon" "httpd" "nrpe" "processor" "collector" "rrdcached" "synergy" "smsd" "postgresql", "op5config")
+services=("sshd" "mysqld" "merlind" "naemon" "httpd" "nrpe" "processor" "collector" "rrdcached" "synergy" "smsd" "postgresql" "op5config")
 for i in "${services[@]}"
 do
     service $i restart
