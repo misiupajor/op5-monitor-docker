@@ -49,25 +49,35 @@ You can add custom hooks by adding any script to /entrypoint.d/hooks/ directory.
 
 ```json
 {
-        "start": [
+        "prestart": [
             {
-                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "container_started"]
+                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+                "args": ["prestart"]
             },
             {
-                "path": "/usr/bin/echo",
-                "args": ["arg1", "arg2"]
+                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
+                "args": ["--action", "contained_started"]
             }
         ],
-        "stop":[
+        "poststart": [
+            {
+                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+                "args": ["poststart"]
+            },
+            {
+                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
+                "args": ["--action", "contained_booted"]
+            }
+        ],
+        "poststop":[
+            {
+                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+                "args": ["poststop"]
+            },
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
                 "args": ["--action", "container_stopped"]
             },
-            {
-                "path": "/bin/echo",
-                "args": ["arg1", "arg2"]
-            }
         ]
 }
 ```
@@ -88,7 +98,7 @@ $ docker build --rm -t op5com/op5-monitor .
 ```
 
 ```sh
-$ docker run -tid -e import_backup=<name of backup file>.backup -p 443:443 op5com/op5-monitor
+$ docker run -tid -e IMPORT_BACKUP=<name of backup file>.backup -p 443:443 op5com/op5-monitor
 ```
 
 ## Author
