@@ -2,7 +2,7 @@ FROM centos:6
 MAINTAINER Misiu Pajor <misiu.pajor@op5.com>
 
 # Install OP5 Monitor 7.3.15
-RUN yum -y install wget openssh-server \
+RUN yum -y install wget openssh-server python-requests \
     && wget https://d2ubxhm80y3bwr.cloudfront.net/Downloads/op5_monitor_archive/op5-monitor-7.3.15-20170707.tar.gz -O /tmp/op5-software.tar.gz \
     && mkdir -p /tmp/op5-monitor && tar -zxf /tmp/op5-software.tar.gz -C /tmp/op5-monitor --strip-components=1 \
     && cd /tmp/op5-monitor && ./install.sh --silent \
@@ -30,7 +30,7 @@ EXPOSE 22
 EXPOSE 162/tcp 162/udp
 
 COPY /entrypoint.d /usr/libexec/entrypoint.d/
-RUN chmod +x /usr/libexec/entrypoint.d/entrypoint.sh
 RUN chmod +x /usr/libexec/entrypoint.d/hooks/*
+RUN chmod +x /usr/libexec/entrypoint.d/entrypoint.sh
 RUN chmod +x /usr/libexec/entrypoint.d/hooks.py
 CMD ["/usr/libexec/entrypoint.d/entrypoint.sh"]
