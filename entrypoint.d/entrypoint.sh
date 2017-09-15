@@ -23,7 +23,7 @@ if [ ! -z "$IMPORT_BACKUP" ]; then
 		mon stop
     fi
 fi
-
+# import license key
 if [ ! -z "$LICENSE_KEY" ]; then
 	file="/usr/libexec/entrypoint.d/licenses/${LICENSE_KEY}"
 	if [ ! -e "$file" ]; then
