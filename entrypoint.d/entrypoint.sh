@@ -21,11 +21,14 @@ if [ ! -z "$IMPORT_BACKUP" ]; then
     fi
 fi
 
+# set default password to 'monitor'
+echo 'root:monitor' | chpasswd
+
 # start OP5 related services
-services=("sshd" "mysqld" "merlind" "naemon" "httpd" "nrpe" "processor" "collector" "rrdcached" "synergy" "smsd" "postgresql")
+services=("sshd" "mysqld" "merlind" "naemon" "httpd" "nrpe" "processor" "collector" "rrdcached" "synergy" "smsd" "postgresql", "op5config")
 for i in "${services[@]}"
 do
-    service $i start
+    service $i restart
 done
 
 
