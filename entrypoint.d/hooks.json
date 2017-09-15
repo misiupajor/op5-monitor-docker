@@ -27,6 +27,6 @@
             {   
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
                 "args": ["--action", "container_stopped"]
-            },
+            }
         ]   
 }
