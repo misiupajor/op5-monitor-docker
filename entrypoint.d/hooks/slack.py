@@ -4,7 +4,7 @@ import sys, os, datetime
 
 def slack(message):
 	# Incoming webhook API token, change to yours.
-	token = "EXAMPLE/FORMAT/TOKEN"
+	token = "my/api/token"
     webhook_url = 'https://hooks.slack.com/services/{0}'.format(token)
     payload = {
         'username': "Docker container",
@@ -92,8 +92,8 @@ def humanize_time(amount, units = 'seconds'):
     return buf
 
 def main():
-    type = sys.argv[1]
-    if type:
+    if len(sys.argv) > 1:
+        type = sys.argv[1]
         if type == "prestart":
             _create_benchmarkfile()
             message = "Docker container started."
@@ -101,8 +101,10 @@ def main():
             message = "Docker container is now running.\nBenchmark measurements: {0} to completely boot.".format(humanize_time(get_benchmark_time()))
         elif type == "poststop":
             message = "Docker container gracefully stopped."
+        else:
+            sys.exit("slack.py requires one valid argument: prestat|poststart|poststop")
         slack(message)
-    sys.exit("No valid arguments were given.")
-
+    else:
+        sys.exit("slack.py requires one argument: prestat|poststart|poststop")
 if __name__ == '__main__':
     main()
