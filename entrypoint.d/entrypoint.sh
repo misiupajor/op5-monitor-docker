@@ -11,13 +11,13 @@ function trigger_hooks() {
 trigger_hooks prestart
 
 # import backup file
-if [ ! -z "$import_backup" ]; then
-	file="/usr/libexec/entrypoint.d/backups/${import_backup}"
+if [ ! -z "$IMPORT_BACKUP" ]; then
+	file="/usr/libexec/entrypoint.d/backups/${IMPORT_BACKUP}"
     if [ ! -f "$file" ]; then
         echo -e "Error. Failed to import backup. File is missing: ${file}. Skipping...\n"
     else
         echo -e "Backup file found. Importing: ${file} ...\n"
-#        op5-restore -n -b ${file}; mon stop
+		op5-restore -n -b ${file}; mon stop
     fi
 fi
 
