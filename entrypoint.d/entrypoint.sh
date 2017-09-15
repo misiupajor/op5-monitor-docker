@@ -17,7 +17,10 @@ if [ ! -z "$IMPORT_BACKUP" ]; then
         echo -e "Error. Failed to import backup. File is missing: ${file}. Skipping...\n"
     else
         echo -e "Backup file found. Importing: ${file} ...\n"
-		op5-restore -n -b ${file}; mon stop
+		op5-restore -n -b ${file}
+		# remove all peer and poller nodes
+		for node in `mon node list --type=peer,poller`; do mon node remove "$node"; done;
+		mon stop
     fi
 fi
 
