@@ -11,7 +11,7 @@ This repository contains the OP5 Monitor software, in docker. It is also availab
  * Latest version of OP5 monitor to date (currently v7.3.15)
  * Pre-bundled with a trial license
  * Support for **triggering hooks** on prestart, poststart and poststop. **Slack** hook example is included.
- * Support for **importing OP5 backup files** to help quickly lanuch testing/development environments
+ * Support for **importing OP5 backup files** to help quickly launch testing/development environments
  * Support for **installing OP5 license keys**. Defaults to trial license if none if specified
 
 ## Install
@@ -110,7 +110,7 @@ $ docker run -tid -e IMPORT_BACKUP=<name of backup file>.backup -p 443:443 op5co
 
 ## Importing OP5 license keys
 
-You can import your OP5 license key if needed. If not specified, it defualts to the trial license.
+You can import your OP5 license key if needed. If not specified, it defaults to the trial license.
 
 In order to do so, place your license key (eg. op5license.lic) in entrypoint.d/license/, and re-build and run your docker container:
 
