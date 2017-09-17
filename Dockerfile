@@ -12,7 +12,8 @@ RUN yum -y install wget openssh-server python-requests \
 
 # Replace the system() source because inside Docker we can't access /proc/kmsg.
 # https://groups.google.com/forum/#!topic/docker-user/446yoB0Vx6w
-RUN sed -i -E 's/^(\s*)system\(\);/\1unix-stream("\/dev\/log");/' /etc/syslog-ng/syslog-ng.conf
+RUN sed -i -E 's/^(\s*)system\(\);/\1unix-stream("\/dev\/log");/' /etc/syslog-ng/syslog-ng.conf \
+	&& sed -i -E '/\proc\/kmsg/ s/^#*/#/' /etc/syslog-ng/syslog-ng.conf
 
 # Expose ports that are required by OP5
 EXPOSE 80 443 5666 15551 22 161/tcp 162/udp
