@@ -46,7 +46,7 @@ https://`<docker server>`:443
 
 ## Adding hooks
 
-You can add custom hooks by adding any script to /entrypoint.d/hooks/ directory. Ensure that they are well defined in /entrypoint.d/hooks.json, something like this will work:
+You can add custom hooks by adding any script to entrypoint.d/hooks/ directory. Ensure that they are well defined in entrypoint.d/hooks.json, something like this will work:
 
 ```json
 {
