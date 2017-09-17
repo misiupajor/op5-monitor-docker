@@ -129,6 +129,7 @@ Thanks goes to these wonderful people:
 
 * Caesar Ahlenhed ([@MrFriday AB](https://www.mrfriday.com))
 * Ken Dobbins ([@OP5](https://www.op5.com))
+* Robert Claesson ([@OP5](https://www.op5.com))
 
 ## Author
 **Misiu Pajor**
