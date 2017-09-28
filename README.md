@@ -44,7 +44,7 @@ Now you can reach OP5 Monitor on:
 
 https://`<docker server>`:443
 
-## Adding hooks
+## Adding hooks (optional)
 
 You can add custom hooks by adding any script to entrypoint.d/hooks/ directory. Ensure that they are well defined in entrypoint.d/hooks.json and that enabled is is true, something like this will work:
 
