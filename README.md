@@ -46,38 +46,44 @@ https://`<docker server>`:443
 
 ## Adding hooks
 
-You can add custom hooks by adding any script to entrypoint.d/hooks/ directory. Ensure that they are well defined in entrypoint.d/hooks.json, something like this will work:
+You can add custom hooks by adding any script to entrypoint.d/hooks/ directory. Ensure that they are well defined in entrypoint.d/hooks.json and that enabled is is true, something like this will work:
 
 ```json
 {
         "prestart": [
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
-                "args": ["prestart"]
+                "args": ["prestart"],
+				"enabled": false
             },
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "contained_started"]
+                "args": ["--action", "contained_started"],
+				"enabled": true
             }
         ],
         "poststart": [
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
-                "args": ["poststart"]
+                "args": ["poststart"],
+                "enabled": false
             },
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "contained_booted"]
+                "args": ["--action", "contained_booted"],
+                "enabled": true
             }
         ],
         "poststop":[
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
-                "args": ["poststop"]
+                "args": ["poststop"],
+                "enabled": false
             },
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "container_stopped"]
+                "args": ["--action", "container_stopped"],
+                "enabled": true
             }
         ]
 }
@@ -128,6 +134,7 @@ $ docker run -tid -e LICENSE_KEY=<name of license key>.lic -p 443:443 op5com/op5
 Thanks goes to these wonderful people:
 
 * Caesar Ahlenhed ([@MrFriday AB](https://www.mrfriday.com))
+* Christian Nilsson ([@OP5](https://www.op5.com))
 * Ken Dobbins ([@OP5](https://www.op5.com))
 * Robert Claesson ([@OP5](https://www.op5.com))
 
