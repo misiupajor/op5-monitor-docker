@@ -114,7 +114,7 @@ $ docker run -tid -e -v /tmp/backups/:/usr/libexec/entrypoint.d/backups/ IMPORT_
 
 You can import your OP5 license key if needed. If not specified, it defaults to the trial license.
 
-In order to do so, place your license key (eg. op5license.lic) in a folder locally on your docker host: (eg: /tmp/licenses/{license file}.lic, and then run your docker container:
+In order to do so, place your license key (eg. op5license.lic) in a folder locally on your docker host: (eg: /tmp/licenses/{license file}.lic), and then run your docker container:
 
 ```sh
 $ docker run -tid -e -v /tmp/licenses/:/usr/libexec/entrypoint.d/licenses/ LICENSE_KEY=<license file>.lic -p 443:443 op5com/op5-monitor
