@@ -54,12 +54,12 @@ You can add custom hooks by adding any script to entrypoint.d/hooks/ directory. 
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
                 "args": ["prestart"],
-				"enabled": false
+                "enabled": false
             },
             {
                 "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
                 "args": ["--action", "contained_started"],
-				"enabled": true
+                "enabled": true
             }
         ],
         "poststart": [
