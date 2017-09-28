@@ -1,38 +1,35 @@
 {
-        "prestart": [
-            {   
-                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
-                "args": ["prestart"],
-				"enabled": False
-            },  
-            {   
-                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "contained_started"],
-				"enabled": False
-            }   
-        ],  
-        "poststart": [
-            {
-                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
-                "args": ["poststart"],
-				"enabled": False
-            },
-            {
-                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "contained_booted"],
-				"enabled": False
-            }
-        ],
-        "poststop":[
-            {
-                "path": "/usr/libexec/entrypoint.d/hooks/slack.py",
-                "args": ["poststop"],
-				"enabled": False
-            },
-            {   
-                "path": "/usr/libexec/entrypoint.d/hooks/example.sh",
-                "args": ["--action", "container_stopped"],
-				"enabled": False
-            }
-        ]   
+	"prestart": [{
+			"path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+			"args": ["prestart"],
+			"enabled": false
+		},
+		{
+			"path": "/usr/libexec/entrypoint.d/hooks/example.sh",
+			"args": ["--action", "contained_started"],
+			"enabled": false
+		}
+	],
+	"poststart": [{
+			"path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+			"args": ["poststart"],
+			"enabled": false
+		},
+		{
+			"path": "/usr/libexec/entrypoint.d/hooks/example.sh",
+			"args": ["--action", "contained_booted"],
+			"enabled": false
+		}
+	],
+	"poststop": [{
+			"path": "/usr/libexec/entrypoint.d/hooks/slack.py",
+			"args": ["poststop"],
+			"enabled": false
+		},
+		{
+			"path": "/usr/libexec/entrypoint.d/hooks/example.sh",
+			"args": ["--action", "container_stopped"],
+			"enabled": false
+		}
+	]
 }
