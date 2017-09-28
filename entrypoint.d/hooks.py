@@ -20,18 +20,19 @@ def _load_hooks(type=None):
 def trigger_hook(type=None):
         hooks = _load_hooks(type)
         for hook in hooks:
-                cmd = hook["path"]
-                for arg in hook["args"]:
-                        cmd += " " + arg
-                cmd = shlex.split(str(cmd))
-                print "Running {0} hook: {1}".format(type, cmd)
-                try:
-                        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                        stdout, stderror = p.communicate()
-                        if p.returncode != 0:
-                                sys.exit("Hook {0} failed. Error: {1} {2}".format(hook["path"], stderror, stdout))
-                except (OSError, IOError) as e:
-                        sys.exit("Hook {0} failed. Error: {1}".format(hook["path"], e))
+                if hook["enabled"]:
+                    cmd = hook["path"]
+                    for arg in hook["args"]:
+                            cmd += " " + arg
+                    cmd = shlex.split(str(cmd))
+                    print "Running {0} hook: {1}".format(type, cmd)
+                    try:
+                            p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                            stdout, stderror = p.communicate()
+                            if p.returncode != 0:
+                                    sys.exit("Hook {0} failed. Error: {1} {2}".format(hook["path"], stderror, stdout))
+                    except (OSError, IOError) as e:
+                            sys.exit("Hook {0} failed. Error: {1}".format(hook["path"], e))
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
