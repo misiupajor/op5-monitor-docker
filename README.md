@@ -8,7 +8,7 @@ This repository contains the OP5 Monitor software, in docker. It is also availab
 
 ## Features
 
- * Latest version of OP5 monitor to date (currently v7.3.16) on CentOS 6.9
+ * Latest version of OP5 monitor to date (currently v7.3.17) on CentOS 6.9
  * Pre-bundled with a trial license
  * Support for **triggering hooks** on prestart, poststart and poststop. **Slack** hook example is included.
  * Support for **importing OP5 backup files** to help quickly launch testing/development environments
