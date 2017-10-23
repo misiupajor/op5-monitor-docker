@@ -1,9 +1,10 @@
 FROM centos:centos6.9
 MAINTAINER Misiu Pajor <misiu.pajor@op5.com>
 
-# Install OP5 Monitor (currently v7.3.16)
+# Install OP5 Monitor (currently v7.3.17)
+ARG OP5_MONITOR_SOFTWARE_URL=https://s3-eu-west-1.amazonaws.com/op5-filebase/Downloads/op5_monitor_archive/op5-monitor-7.3.17-20171013.tar.gz
 RUN yum -y install wget openssh-server python-requests \
-    && wget https://d2ubxhm80y3bwr.cloudfront.net/Downloads/op5_monitor_archive/op5-monitor-7.3.16-20170919.tar.gz -O /tmp/op5-software.tar.gz \
+    && wget $OP5_MONITOR_SOFTWARE_URL -O /tmp/op5-software.tar.gz \
     && mkdir -p /tmp/op5-monitor && tar -zxf /tmp/op5-software.tar.gz -C /tmp/op5-monitor --strip-components=1 \
     && cd /tmp/op5-monitor && ./install.sh --silent \
     && rm -f /tmp/op5-software.tar.gz \
