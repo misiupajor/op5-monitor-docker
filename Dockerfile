@@ -1,7 +1,7 @@
 FROM centos:centos6.9
 MAINTAINER Misiu Pajor <misiu.pajor@op5.com>
 
-# Install OP5 Monitor (currently v7.3.17)
+# Install OP5 Monitor
 ARG OP5_MONITOR_SOFTWARE_URL=https://d2ubxhm80y3bwr.cloudfront.net/Downloads/op5_monitor_archive/op5-monitor-7.3.18-20171114.tar.gz
 RUN yum -y install wget openssh-server python-requests \
     && wget $OP5_MONITOR_SOFTWARE_URL -O /tmp/op5-software.tar.gz \
