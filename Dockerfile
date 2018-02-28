@@ -20,7 +20,7 @@ RUN sed -i -E 's/^(\s*)system\(\);/\1unix-stream("\/dev\/log");/' /etc/syslog-ng
 EXPOSE 80 443 5666 15551 22 161/tcp 162/udp
 
 COPY /entrypoint.d /usr/libexec/entrypoint.d/
-COPY /entrypoint.d/licenses/op5license.lic /etc/op5license/op5license.lic
+COPY /entrypoint.d/licenses/* /etc/op5license/
 
 RUN chmod +x /usr/libexec/entrypoint.d/hooks/* \
 	&& chmod +x /usr/libexec/entrypoint.d/entrypoint.sh \ 
