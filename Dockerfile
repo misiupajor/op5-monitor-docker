@@ -2,7 +2,7 @@ FROM centos:centos6.9
 MAINTAINER Misiu Pajor <misiu.pajor@op5.com>
 
 # Install OP5 Monitor
-ARG OP5_MONITOR_SOFTWARE_URL=https://d2ubxhm80y3bwr.cloudfront.net/Downloads/op5_monitor_archive/op5-monitor-7.3.18-20171114.tar.gz
+ARG OP5_MONITOR_SOFTWARE_URL=https://d2ubxhm80y3bwr.cloudfront.net/Downloads/op5_monitor_archive/op5-monitor-7.3.21-20180220.tar.gz
 RUN yum -y install wget openssh-server python-requests \
     && wget $OP5_MONITOR_SOFTWARE_URL -O /tmp/op5-software.tar.gz \
     && mkdir -p /tmp/op5-monitor && tar -zxf /tmp/op5-software.tar.gz -C /tmp/op5-monitor --strip-components=1 \
@@ -20,6 +20,8 @@ RUN sed -i -E 's/^(\s*)system\(\);/\1unix-stream("\/dev\/log");/' /etc/syslog-ng
 EXPOSE 80 443 5666 15551 22 161/tcp 162/udp
 
 COPY /entrypoint.d /usr/libexec/entrypoint.d/
+COPY /entrypoint.d/licenses/op5license.lic /etc/op5license/op5license.lic
+
 RUN chmod +x /usr/libexec/entrypoint.d/hooks/* \
 	&& chmod +x /usr/libexec/entrypoint.d/entrypoint.sh \ 
 	&& chmod +x /usr/libexec/entrypoint.d/hooks.py
