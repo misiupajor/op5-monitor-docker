@@ -44,7 +44,7 @@ fi
 echo 'root:monitor' | chpasswd
 
 # start OP5 related services
-services=("sshd" "mysqld" "merlind" "naemon" "httpd" "nrpe" "processor" "collector" "rrdcached" "npcd" "synergy" "smsd" "postgresql" "op5config" "syslog-ng" "crond")
+services=("sshd" "mysqld" "merlind" "naemon" "httpd" "nrpe" "processor" "collector" "rrdcached" "npcd" "synergy" "smsd" "postgresql" "op5config" "syslog-ng" "crond", "postfix")
 for i in "${services[@]}"
 do
     service $i restart
