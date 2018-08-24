@@ -31,7 +31,7 @@ if [ ! -z "$LICENSE_KEY" ]; then
 	else
 		if [[ "$file" =~ \.lic$ ]]; then
 			echo -e "License file found. Importing license file: ${file} ..."
-			mv $file /etc/op5license/op5license.lic
+			cp -f $file /etc/op5license/op5license.lic
 			chown apache:apache /etc/op5license/op5license.lic
 			chmod 664 /etc/op5license/op5license.lic
 		else
