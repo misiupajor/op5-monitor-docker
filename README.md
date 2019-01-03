@@ -44,6 +44,25 @@ Now you can reach OP5 Monitor on:
 
 https://`<docker server>`:443
 
+If you want to experiment with multiple OP5 Monitor server you do that easily by starting several servers:
+
+```sh
+$ docker run -tid -p 1443:443 -p 122:22 op5com/op5-monitor
+$ docker run -tid -p 2443:443 -p 222:22 op5com/op5-monitor
+```
+
+THen you can reach OP5 Monitors on:
+
+https://`<docker server>`:1443
+https://`<docker server>`:2443
+
+Or via ssh:
+
+ssh <docker server>:122
+ssh <docker server>:222
+
+Note the "instance" increment on the exposed local ports, that will make it easier to keep tab on your servers
+
 ## Adding hooks (optional)
 
 You can add custom hooks by adding any script to entrypoint.d/hooks/ directory. Ensure that they are well defined in entrypoint.d/hooks.json and that enabled is is true, something like this will work:
